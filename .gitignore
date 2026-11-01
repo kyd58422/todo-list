@@ -1,0 +1,13 @@
+# 비밀 설정 파일은 GitHub에 올리지 않습니다.
+.env
+.env.*
+!.env.example
+
+# Supabase CLI의 로컬 비밀 설정
+supabase/.env
+
+# 개발 도구 및 운영체제 임시 파일
+node_modules/
+.DS_Store
+Thumbs.db
+*.log

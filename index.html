@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나의 TODO LIST</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">PERSONAL PLANNER</p>
+        <h1>나의 TODO LIST</h1>
+        <p>할 일을 시간순으로 정리하고, 끝낸 일은 Done으로 옮겨보세요.</p>
+      </header>
+
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+
+      <section id="authSection" class="panel auth-panel" aria-labelledby="authTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">ACCOUNT</p>
+            <h2 id="authTitle">로그인</h2>
+          </div>
+        </div>
+
+        <div id="loggedOutArea" class="auth-forms">
+          <form id="signInForm" class="auth-form">
+            <h3>로그인</h3>
+            <label>이메일<input name="email" type="email" autocomplete="email" required /></label>
+            <label>비밀번호<input name="password" type="password" autocomplete="current-password" required minlength="6" /></label>
+            <button type="submit">로그인</button>
+          </form>
+          <form id="signUpForm" class="auth-form signup-form">
+            <h3>처음이신가요?</h3>
+            <p>이메일과 6자 이상의 비밀번호로 가입하세요.</p>
+            <label>이메일<input name="email" type="email" autocomplete="email" required /></label>
+            <label>비밀번호<input name="password" type="password" autocomplete="new-password" required minlength="6" /></label>
+            <button type="submit" class="secondary">회원가입</button>
+          </form>
+        </div>
+
+        <div id="loggedInArea" class="user-bar" hidden>
+          <div><span class="avatar" aria-hidden="true">✓</span><span><strong id="userEmail"></strong>님, 오늘도 힘내세요.</span></div>
+          <button id="signOutButton" type="button" class="text-button">로그아웃</button>
+        </div>
+      </section>
+
+      <section id="todoSection" hidden>
+        <form id="todoForm" class="panel todo-form">
+          <div class="section-heading">
+            <div><p class="section-label">NEW TODO</p><h2 id="formTitle">할 일 추가</h2></div>
+            <button id="cancelEditButton" type="button" class="text-button" hidden>수정 취소</button>
+          </div>
+          <div class="form-grid">
+            <label class="title-field">할 일<input id="titleInput" name="title" type="text" placeholder="예: 회의 자료 정리하기" required maxlength="200" /></label>
+            <label>날짜와 시간<input id="dueAtInput" name="dueAt" type="datetime-local" required /></label>
+            <button id="saveButton" type="submit">할 일 추가</button>
+          </div>
+        </form>
+
+        <div class="board">
+          <section class="todo-column" aria-labelledby="willBeTitle">
+            <div class="column-title"><div><p class="section-label">TO DO</p><h2 id="willBeTitle">Will be</h2></div><span id="todoCount" class="count">0</span></div>
+            <div id="todoList" class="group-list"></div>
+          </section>
+          <section class="todo-column done-column" aria-labelledby="doneTitle">
+            <div class="column-title"><div><p class="section-label">COMPLETED</p><h2 id="doneTitle">Done</h2></div><span id="doneCount" class="count">0</span></div>
+            <div id="doneList" class="group-list"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
